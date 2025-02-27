@@ -16,6 +16,11 @@ Vi har et [fill_script.sql](sql/fill_script.sql)
 
 ### SQL script med de 15 SQL-forespørgsler.
 
+Vi har et [sql_queries.sql](sql/sql_queries.sql) med de 15 SQL-forespørgsler.
+
+Vi har et [sql_queries.md](documentation/sql_queries.md) med forklaringer til de 15 SQL-forespørgsler.
+
+
 ### Stored Procedures, Functions og Triggers.
 
 ### Applikation som angivet i opgave 4.
