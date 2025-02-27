@@ -53,12 +53,12 @@ WHERE p.player_id = tr.player_id
 
 For at visse en liste over spillere (`SELECT p.player_id, username`), hvor de er registreret i en bestemt turnering, hvilket
 gøres ved at joine `players` og `tournament_registrations` tabellerne (`FROM players p, tournament_registrations tr WHERE p.player_id = tr.player_id`), for at finde de spillere, som er registreret i en bestemt turnering,
-herefter filtrere på turneringen med `tournament_id = 1`.
+herefter filtrere vi på turneringen med `tournament_id = 1`.
 
 ##### Resultat:
 ![img.png](img/q3.png)
 
-Vi kan se at der er 4 spillere: `user1 (player_id = 1), user5 (player_id = 5), user9 (player_id = 9), user12 (player_id = 12)`, som er registreret i turneringen med `tournament_id = 1`.
+Vi kan se at der er 4 spillere: `user1 (player_id = 1), user5 (player_id = 5), user9 (player_id = 9), user12 (player_id = 12)`, som er registreret i turneringen hvor `tournament_id = 1`.
 
 ---
 
@@ -73,8 +73,8 @@ ORDER BY wins DESC
 ```
 
 For at finde spillerene med flest sejre i en bestem turnering, skulle vi joine `matches` og `players` tabellerne (`JOIN players p ON m.winner_id = p.player_id`),
-for at finde de spillere, som har vundet kampe i en bestemt turnering (`WHERE m.tournament_id = 1`), herefter gruppere på `player_id` og `username`,
-for at tælle antallet af vundne kampe (`COUNT(m.winner_id) AS wins`) og sortere dem efter antallet af vundne kampe (`ORDER BY wins DESC`).
+for at finde de spillere, som har vundet kampe i en bestemt turnering (`WHERE m.tournament_id = 1`), herefter gruppere vi på `player_id` og `username`,
+for at få antallet af vundne kampe (`COUNT(m.winner_id) AS wins`) og sortere dem efter antallet af vundne kampe (`ORDER BY wins DESC`).
 
 ##### Resultat:
 ![img.png](img/q4.png)
@@ -93,8 +93,8 @@ WHERE player1_id = 4
 ```
 
 Vi henter alle kampe fra `matches` tabellen (`SELECT * FROM matches`), 
-hvor en bestemt spiller har deltaget, hvilket gøres ved at filtrere på `player1_id = 4 OR player2_id = 4`. 
-Her var det vigtigt at tage højde for, at spilleren kan være enten `player1` eller `player2` i en kamp, da 
+hvor én bestemt spiller har deltaget, hvilket gøres ved at filtrere på `player1_id = 4 OR player2_id = 4`. 
+Her var det vigtigt at tage højde for, at spilleren enten var `player1` eller `player2` i en kamp, da 
 vi ellers kunne have overset nogle kampe.
 
 ##### Resultat:
@@ -112,9 +112,9 @@ WHERE t.tournament_id = tr.tournament_id
   AND tr.player_id = 4;
 ```
 
-Vi vælger at hente alt data fra `tournaments` tabellen (`SELECT t.* FROM tournaments t`), hvor efter vi 
-joine `tournaments` og `tournament_registrations` tabellerne (`FROM tournaments t, tournament_registrations tr WHERE t.tournament_id = tr.tournament_id`), 
-for at finde de turneringer som en bestemt spiller er tilmeldt i og filtrere på `player_id = 4`.
+Vi vælger at hente alt data fra `tournaments` tabellen (`SELECT t.* FROM tournaments t`), hvorefter vi 
+joiner `tournaments` og `tournament_registrations` tabellerne (`FROM tournaments t, tournament_registrations tr WHERE t.tournament_id = tr.tournament_id`), 
+for at finde de turneringer som én bestemt spiller er tilmeldt i, og filtrere på spilleren med `player_id = 4`.
 
 ##### Resultat:
 ![img.png](img/q6.png)
@@ -138,7 +138,7 @@ og sætter et limit på 5 spillere (`LIMIT 5`).
 ##### Resultat:
 ![img.png](img/q7.png)
 
-Mangler beskrivelse !!!
+Mangler rigtigt rating før beskrivelse kan komme.
 
 ---
 
@@ -149,13 +149,13 @@ FROM players;
 ```
 
 For at beregne den gennemsnitlige rating for alle spillere, 
-skal tager vi den indbyggede SQL funktion `AVG()` i brug, ved at sætte `AVG(rating) AS avg_rating`,
+tager vi den indbyggede SQL funktion `AVG()` i brug, ved at sætte `AVG(rating) AS avg_rating`,
 hvilket vil give os den gennemsnitlige rating for alle spillere.
 
 ##### Resultat:
 ![img.png](img/q8.png)
 
-Her kan vi se at den gennemsnitlige rating for alle spillere er XXXXX.
+Her kan vi se at den gennemsnitlige rating for alle spillere er **XXXXX**.
 
 ---
 
@@ -169,7 +169,7 @@ HAVING COUNT(tr.player_id) >= 5;
 ```
 
 Vi henter alle turneringer ud fra `tournaments` tabellen (`SELECT t.*`), samt en count af antallet af spillere i hver turnering (`COUNT(tr.player_id) AS num_players`),
-herefter joine vi `tournaments` og `tournament_registrations` tabellerne (`JOIN tournament_registrations tr ON t.tournament_id = tr.tournament_id`), for at finde antallet af spillere i hver turnering,
+herefter vi joiner `tournaments` og `tournament_registrations` tabellerne (`JOIN tournament_registrations tr ON t.tournament_id = tr.tournament_id`), for at finde antallet af spillere i hver turnering,
 derefter gruppere (`GROUP BY t.tournament_id`) og filtrere på turneringer, som har mindst 5 deltagere (`HAVING COUNT(tr.player_id) >= 5`).
 
 
@@ -259,7 +259,7 @@ HAVING COUNT(tr.tournament_id) > 3;
 ```
 
 Vi henter alle spillere ud fra `players` tabellen (`SELECT p.*`),
-og joine `players` og `tournament_registrations` tabellerne (`JOIN tournament_registrations tr ON p.player_id = tr.player_id`), 
+og joiner `players` og `tournament_registrations` tabellerne (`JOIN tournament_registrations tr ON p.player_id = tr.player_id`), 
 for at finde de spillere, som har registreret sig i flere end 3 turneringer,
 derefter gruppere vi på `player_id` (`GROUP BY p.player_id`) og filtrere på spillere, som har registreret sig i flere end 3 turneringer (`HAVING COUNT(tr.tournament_id) > 3`).
 
