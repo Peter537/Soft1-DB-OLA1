@@ -24,15 +24,15 @@ INSERT INTO players (username, email, utc_created_at) VALUES
 --
 -- Tournaments
 --
-INSERT INTO tournaments (name, game, max_players, utc_start_timestamp, utc_created_at) VALUES
-('tournament1', 'Counter-Strike 2', 4, (NOW() AT TIME ZONE 'UTC') - INTERVAL '21 days', NOW() AT TIME ZONE 'UTC'),
-('tournament2', 'Counter-Strike 2', 8, (NOW() AT TIME ZONE 'UTC') - INTERVAL '14 days', NOW() AT TIME ZONE 'UTC'),
-('tournament3', 'Dota 2', 4, (NOW() AT TIME ZONE 'UTC') - INTERVAL '7 days', NOW() AT TIME ZONE 'UTC'),
-('tournament4', 'Counter-Strike 2', 8, (NOW() AT TIME ZONE 'UTC') - INTERVAL '3 days', NOW() AT TIME ZONE 'UTC'),
-('tournament5', 'Counter-Strike 2', 4, (NOW() AT TIME ZONE 'UTC') + INTERVAL '7 days', NOW() AT TIME ZONE 'UTC'),
-('tournament6', 'League of Legends', 8, (NOW() AT TIME ZONE 'UTC') + INTERVAL '14 days', NOW() AT TIME ZONE 'UTC'),
-('tournament7', 'Dota 2', 4, (NOW() AT TIME ZONE 'UTC') + INTERVAL '31 days', NOW() AT TIME ZONE 'UTC'),
-('tournament8', 'Counter-Strike 2', 8, (NOW() AT TIME ZONE 'UTC') + INTERVAL '42 days', NOW() AT TIME ZONE 'UTC');
+INSERT INTO tournaments (name, game, max_players, status, utc_start_timestamp, utc_created_at) VALUES
+('tournament1', 'Counter-Strike 2', 4, 'completed', (NOW() AT TIME ZONE 'UTC') - INTERVAL '21 days', NOW() AT TIME ZONE 'UTC'),
+('tournament2', 'Counter-Strike 2', 8, 'completed', (NOW() AT TIME ZONE 'UTC') - INTERVAL '14 days', NOW() AT TIME ZONE 'UTC'),
+('tournament3', 'Dota 2', 4, 'completed', (NOW() AT TIME ZONE 'UTC') - INTERVAL '7 days', NOW() AT TIME ZONE 'UTC'),
+('tournament4', 'Counter-Strike 2', 8, 'completed', (NOW() AT TIME ZONE 'UTC') - INTERVAL '3 days', NOW() AT TIME ZONE 'UTC'),
+('tournament5', 'Counter-Strike 2', 4, 'upcoming', (NOW() AT TIME ZONE 'UTC') + INTERVAL '7 days', NOW() AT TIME ZONE 'UTC'),
+('tournament6', 'League of Legends', 8, 'upcoming', (NOW() AT TIME ZONE 'UTC') + INTERVAL '14 days', NOW() AT TIME ZONE 'UTC'),
+('tournament7', 'Dota 2', 4, 'upcoming', (NOW() AT TIME ZONE 'UTC') + INTERVAL '31 days', NOW() AT TIME ZONE 'UTC'),
+('tournament8', 'Counter-Strike 2', 8, 'upcoming', (NOW() AT TIME ZONE 'UTC') + INTERVAL '42 days', NOW() AT TIME ZONE 'UTC');
 
 --
 -- Tournament Registrations
