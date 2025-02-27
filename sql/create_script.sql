@@ -1,7 +1,4 @@
-DROP TABLE IF EXISTS players CASCADE;
-DROP TABLE IF EXISTS tournaments CASCADE;
-DROP TABLE IF EXISTS tournament_registrations CASCADE;
-DROP TABLE IF EXISTS matches CASCADE;
+DROP TABLE IF EXISTS players, tournaments, tournament_registrations, matches CASCADE;
 
 CREATE TABLE players (
     player_id SERIAL PRIMARY KEY,
