@@ -33,8 +33,8 @@ WHERE t.tournament_id = tr.tournament_id
 
 Queryen finder det antal af turneringer (`SELECT COUNT(player_id) as tournament_count`), 
 som en spiller har deltaget i (hvor `tr.player_id = 1`), for at kunne finde det antal af turneringer, skal 
-man først lave en `JOIN` mellem `tournaments` og `tournament_registrations` tabellerne, for at vide hvilke turneringer
-spilleren har deltaget i (`WHERE t.tournament_id = tr.tournament_id AND tr.player_id = 1`).
+vi lave en `JOIN` mellem `tournaments` og `tournament_registrations` tabellerne (`FROM tournaments t, tournament_registrations tr WHERE t.tournament_id = tr.tournament_id `), for at vide hvilke turneringer
+spilleren har deltaget i.
 
 ##### Resultat:
 ![img.png](img/q2.png)
@@ -47,12 +47,12 @@ Man kan se at spilleren med `player_id = 1` har deltaget i 3 turneringer.
 ```sql
 SELECT p.player_id, username
 FROM players p, tournament_registrations tr
-WHERE tr.tournament_id = 1
-  AND p.player_id = tr.player_id;
+WHERE p.player_id = tr.player_id
+  AND tr.tournament_id = 1;
 ```
 
 For at visse en liste over spillere (`SELECT p.player_id, username`), hvor de er registreret i en bestemt turnering, hvilket
-gøres ved at joine `players` og `tournament_registrations` tabellerne, for at finde de spillere, som er registreret i en bestemt turnering,
+gøres ved at joine `players` og `tournament_registrations` tabellerne (`FROM players p, tournament_registrations tr WHERE p.player_id = tr.player_id`), for at finde de spillere, som er registreret i en bestemt turnering,
 herefter filtrere på turneringen med `tournament_id = 1`.
 
 ##### Resultat:
@@ -108,14 +108,13 @@ Her kan vi se at spilleren med `player_id = 4` har deltaget i 3 kampe.
 ```sql
 SELECT t.*
 FROM tournaments t, tournament_registrations tr
-WHERE tr.player_id = 4
-  AND t.tournament_id = tr.tournament_id;
+WHERE t.tournament_id = tr.tournament_id
+  AND tr.player_id = 4;
 ```
 
 Vi vælger at hente alt data fra `tournaments` tabellen (`SELECT t.* FROM tournaments t`), hvor efter vi 
-joine `tournaments` og `tournament_registrations` tabellerne, 
-for at finde de turneringer som en bestemt spiller er tilmeldt i og filtrere på `player_id = 4` 
-(`FROM tournaments t, tournament_registrations tr WHERE tr.player_id = 4 AND t.tournament_id = tr.tournament_id;`)
+joine `tournaments` og `tournament_registrations` tabellerne (`FROM tournaments t, tournament_registrations tr WHERE t.tournament_id = tr.tournament_id`), 
+for at finde de turneringer som en bestemt spiller er tilmeldt i og filtrere på `player_id = 4`.
 
 ##### Resultat:
 ![img.png](img/q6.png)
@@ -170,7 +169,7 @@ HAVING COUNT(tr.player_id) >= 5;
 ```
 
 Vi henter alle turneringer ud fra `tournaments` tabellen (`SELECT t.*`), samt en count af antallet af spillere i hver turnering (`COUNT(tr.player_id) AS num_players`),
-herefter joine vi `tournaments` og `tournament_registrations` tabellerne, for at finde antallet af spillere i hver turnering (`JOIN tournament_registrations tr ON t.tournament_id = tr.tournament_id`),
+herefter joine vi `tournaments` og `tournament_registrations` tabellerne (`JOIN tournament_registrations tr ON t.tournament_id = tr.tournament_id`), for at finde antallet af spillere i hver turnering,
 derefter gruppere (`GROUP BY t.tournament_id`) og filtrere på turneringer, som har mindst 5 deltagere (`HAVING COUNT(tr.player_id) >= 5`).
 
 

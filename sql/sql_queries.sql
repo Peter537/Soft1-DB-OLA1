@@ -15,8 +15,8 @@ WHERE t.tournament_id = tr.tournament_id
 -- 3. Vis en liste over spillere registreret i en bestemt turnering.
 SELECT p.player_id, username
 FROM players p, tournament_registrations tr
-WHERE tr.tournament_id = 1
-  AND p.player_id = tr.player_id;
+WHERE p.player_id = tr.player_id
+  AND tr.tournament_id = 1;
 
 
 -- 4. Find spillere med flest sejre i en bestemt turnering.
@@ -38,8 +38,8 @@ WHERE player1_id = 4
 -- 6. Hent en spillers tilmeldte turneringer.
 SELECT t.*
 FROM tournaments t, tournament_registrations tr
-WHERE tr.player_id = 4
-  AND t.tournament_id = tr.tournament_id;
+WHERE t.tournament_id = tr.tournament_id
+  AND tr.player_id = 4;
 
 
 -- 7. Find de 5 bedst rangerede spillere.
