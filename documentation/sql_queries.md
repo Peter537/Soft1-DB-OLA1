@@ -72,6 +72,9 @@ GROUP BY p.player_id, p.username
 ORDER BY wins DESC
 ```
 
+For at finde spillerene med flest sejre i en bestem turnering, skulle vi joine `matches` og `players` tabellerne (`JOIN players p ON m.winner_id = p.player_id`),
+for at finde de spillere, som har vundet kampe i en bestemt turnering (`WHERE m.tournament_id = 1`), herefter gruppere på `player_id` og `username`,
+for at tælle antallet af vundne kampe (`COUNT(m.winner_id) AS wins`) og sortere dem efter antallet af vundne kampe (`ORDER BY wins DESC`).
 
 ##### Resultat:
 ![img.png](img/q4.png)
@@ -88,8 +91,16 @@ FROM matches
 WHERE player1_id = 4
    OR player2_id = 4;
 ```
+
+Vi henter alle kampe fra `matches` tabellen (`SELECT * FROM matches`), 
+hvor en bestemt spiller har deltaget, hvilket gøres ved at filtrere på `player1_id = 4 OR player2_id = 4`. 
+Her var det vigtigt at tage højde for, at spilleren kan være enten `player1` eller `player2` i en kamp, da 
+vi ellers kunne have overset nogle kampe.
+
 ##### Resultat:
 ![img.png](img/q5.png)
+
+Her kan vi se at spilleren med `player_id = 4` har deltaget i 3 kampe.
 
 ---
 
@@ -100,8 +111,16 @@ FROM tournaments t, tournament_registrations tr
 WHERE tr.player_id = 4
   AND t.tournament_id = tr.tournament_id;
 ```
+
+Vi vælger at hente alt data fra `tournaments` tabellen (`SELECT t.* FROM tournaments t`), hvor efter vi 
+joine `tournaments` og `tournament_registrations` tabellerne, 
+for at finde de turneringer som en bestemt spiller er tilmeldt i og filtrere på `player_id = 4` 
+(`FROM tournaments t, tournament_registrations tr WHERE tr.player_id = 4 AND t.tournament_id = tr.tournament_id;`)
+
 ##### Resultat:
 ![img.png](img/q6.png)
+
+Vi kan se all turneringer som spilleren med `player_id = 4` er tilmeldt.
 
 ---
 
@@ -111,8 +130,16 @@ SELECT player_id, username, rating
 FROM players
 ORDER BY rating DESC LIMIT 5;
 ```
+
+Vi henter de 5 bedst rangerede spillere ud fra 
+`players` tabellen (`SELECT player_id, username, rating FROM players`),
+og sorterer dem efter rating i nedadgående rækkefølge (`ORDER BY rating DESC`) 
+og sætter et limit på 5 spillere (`LIMIT 5`).
+
 ##### Resultat:
 ![img.png](img/q7.png)
+
+Mangler beskrivelse !!!
 
 ---
 
@@ -129,6 +156,8 @@ hvilket vil give os den gennemsnitlige rating for alle spillere.
 ##### Resultat:
 ![img.png](img/q8.png)
 
+Her kan vi se at den gennemsnitlige rating for alle spillere er XXXXX.
+
 ---
 
 #### 9. Vis turneringer med mindst 5 deltagere:
@@ -139,6 +168,9 @@ FROM tournaments t
 GROUP BY t.tournament_id
 HAVING COUNT(tr.player_id) >= 5;
 ```
+
+
+
 ##### Resultat:
 ![img.png](img/q9.png)
 ---
