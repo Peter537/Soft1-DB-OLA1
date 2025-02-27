@@ -121,6 +121,11 @@ ORDER BY rating DESC LIMIT 5;
 SELECT AVG(rating) AS avg_rating 
 FROM players;
 ```
+
+For at beregne den gennemsnitlige rating for alle spillere, 
+skal tager vi den indbyggede SQL funktion `AVG()` i brug, ved at sætte `AVG(rating) AS avg_rating`,
+hvilket vil give os den gennemsnitlige rating for alle spillere.
+
 ##### Resultat:
 ![img.png](img/q8.png)
 
@@ -143,8 +148,14 @@ HAVING COUNT(tr.player_id) >= 5;
 SELECT COUNT(*)
 FROM players;
 ```
+
+For at finde det samlede antal af spillere i systemet, kan vi anvende `COUNT(*)` funktionen,
+som vil tælle antallet af rækker i `players` tabellen.
+
 ##### Resultat:
 ![img.png](img/q10.png)
+
+Man kan se, at der er 16 spillere i systemet.
 
 ---
 
@@ -154,8 +165,14 @@ SELECT *
 FROM matches
 WHERE winner_id IS NULL;
 ```
+
+For at finde alle kampe, hvor der mangler en vinder, kan vi filtrere på `winner_id IS NULL`,
+når der vi henter alle kampe ud fra `matches` tabellen (`SELECT * FROM matches`).
+
 ##### Resultat:
 ![img.png](img/q11.png)
+
+Vi kan se at der er 12 kampe, som mangler en vinder.
 
 ---
 
@@ -169,6 +186,8 @@ ORDER BY tournament_cnt DESC;
 ```
 ##### Resultat:
 ![img.png](img/q12.png)
+
+Det mest populære spil er `Counter-Strike 2`, som har 5 turneringer, derefter `Dota 2` med 2 turneringer og til sidst `League of Legends` med kun 1 turnering.
 
 ---
 
@@ -194,6 +213,8 @@ HAVING COUNT(tr.tournament_id) > 3;
 ##### Resultat:
 ![img.png](img/q14.png)
 
+Vi kan se at spilleren user12 (`player_id = 12`) i flere end 3 turneringer.
+
 ---
 
 #### 15. Hent alle kampe i en turnering sorteret efter dato:
@@ -205,5 +226,7 @@ ORDER BY utc_match_timestamp ASC;
 ```
 ##### Resultat:
 ![img.png](img/q15.png)
+
+Vi kan se at der er 7 kampe i turneringen med `tournament_id = 4`, efter vi har sorteret dem efter dato.
 
 ---
