@@ -78,10 +78,12 @@ FROM tournaments
 GROUP BY game
 ORDER BY tournament_cnt DESC;
 
+
 -- 13. Find de 5 nyeste oprettede turneringer.
 SELECT *
 FROM tournaments
 ORDER BY utc_created_at DESC LIMIT 5;
+
 
 -- 14. Find spillere, der har registreret sig i flere end 3 turneringer.
 SELECT p.*
