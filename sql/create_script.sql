@@ -13,6 +13,7 @@ CREATE TABLE tournaments (
     name VARCHAR NOT NULL,
     game VARCHAR NOT NULL,
     max_players INTEGER NOT NULL,
+    status VARCHAR NOT NULL DEFAULT 'upcoming',
     utc_start_timestamp TIMESTAMP NOT NULL,
     utc_created_at TIMESTAMP NOT NULL
 );
