@@ -169,10 +169,16 @@ GROUP BY t.tournament_id
 HAVING COUNT(tr.player_id) >= 5;
 ```
 
+Vi henter alle turneringer ud fra `tournaments` tabellen (`SELECT t.*`), samt en count af antallet af spillere i hver turnering (`COUNT(tr.player_id) AS num_players`),
+herefter joine vi `tournaments` og `tournament_registrations` tabellerne, for at finde antallet af spillere i hver turnering (`JOIN tournament_registrations tr ON t.tournament_id = tr.tournament_id`),
+derefter gruppere (`GROUP BY t.tournament_id`) og filtrere på turneringer, som har mindst 5 deltagere (`HAVING COUNT(tr.player_id) >= 5`).
 
 
 ##### Resultat:
 ![img.png](img/q9.png)
+
+Vi kan se, at der er 4 turneringer, som har mindst 5 deltagere.
+
 ---
 
 #### 10. Find det samlede antal spillere i systemet:
@@ -181,8 +187,8 @@ SELECT COUNT(*)
 FROM players;
 ```
 
-For at finde det samlede antal af spillere i systemet, kan vi anvende `COUNT(*)` funktionen,
-som vil tælle antallet af rækker i `players` tabellen.
+For at finde det samlede antal af spillere i systemet, anvender vi `COUNT(*)` funktionen,
+som der giver antallet af rækker i `players` tabellen.
 
 ##### Resultat:
 ![img.png](img/q10.png)
@@ -216,6 +222,10 @@ FROM tournaments
 GROUP BY game
 ORDER BY tournament_cnt DESC;
 ```
+
+Vi henter alle spil ud fra `tournaments` tabellen (`SELECT game`), samt antallet af turneringer for hvert spil (`COUNT(tournament_id) AS tournament_cnt`),
+derefter gruppere vi på spil (`GROUP BY game`) og sortere dem efter antallet af turneringer i nedadgående rækkefølge (`ORDER BY tournament_cnt DESC`).
+
 ##### Resultat:
 ![img.png](img/q12.png)
 
@@ -229,8 +239,14 @@ SELECT *
 FROM tournaments
 ORDER BY utc_created_at DESC LIMIT 5;
 ```
+
+Vi henter de 5 nyeste oprettede turneringer ud fra `tournaments` tabellen (`SELECT * FROM tournaments`),
+og sorterer dem efter oprettelsesdato i nedadgående rækkefølge (`ORDER BY utc_created_at DESC`) og sætter et limit på 5 turneringer (`LIMIT 5`).
+
 ##### Resultat:
-![img.png](img/q13.png)
+![q13.png](img/q13.png)
+
+Vi kan se de 5 nyeste oprettede turneringer, som er `tournament1, tournament2, tournament3, tournament4, tournament5`.
 
 ---
 
@@ -242,6 +258,12 @@ FROM players p
 GROUP BY p.player_id
 HAVING COUNT(tr.tournament_id) > 3;
 ```
+
+Vi henter alle spillere ud fra `players` tabellen (`SELECT p.*`),
+og joine `players` og `tournament_registrations` tabellerne (`JOIN tournament_registrations tr ON p.player_id = tr.player_id`), 
+for at finde de spillere, som har registreret sig i flere end 3 turneringer,
+derefter gruppere vi på `player_id` (`GROUP BY p.player_id`) og filtrere på spillere, som har registreret sig i flere end 3 turneringer (`HAVING COUNT(tr.tournament_id) > 3`).
+
 ##### Resultat:
 ![img.png](img/q14.png)
 
@@ -256,6 +278,11 @@ FROM matches
 WHERE tournament_id = 4
 ORDER BY utc_match_timestamp ASC;
 ```
+
+Vi henter alle kampe ud fra `matches` tabellen (`SELECT * FROM matches`),
+derefter filtrere vi på turneringen med `tournament_id = 4` (`WHERE tournament_id = 4`) 
+og sorterer dem efter kamp tidspunkt i stigende rækkefølge (`ORDER BY utc_match_timestamp ASC`).
+
 ##### Resultat:
 ![img.png](img/q15.png)
 
