@@ -16,7 +16,7 @@ CREATE TABLE tournaments (
     name VARCHAR NOT NULL,
     game VARCHAR NOT NULL,
     max_players INTEGER NOT NULL,
-    utc_start_date TIMESTAMP NOT NULL,
+    utc_start_timestamp TIMESTAMP NOT NULL,
     utc_created_at TIMESTAMP NOT NULL
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE matches (
     player1_id INTEGER NOT NULL,
     player2_id INTEGER NOT NULL,
     winner_id INTEGER,
-    utc_match_date DATE NOT NULL,
+    utc_match_timestamp TIMESTAMP NOT NULL,
     CONSTRAINT fk_tournament_match
         FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id),
     CONSTRAINT fk_player1
