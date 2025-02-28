@@ -86,7 +86,7 @@ BEGIN
                  END) -
             (SELECT rating FROM players
              WHERE player_id = NEW.winner_id)
-        ) / 400.0)))
+        ) / 400.0))))
     WHERE player_id = NEW.winner_id;
 
     UPDATE players
@@ -100,7 +100,7 @@ BEGIN
                  END) -
             (SELECT rating FROM players
              WHERE player_id = NEW.winner_id)
-        ) / 400.0)))
+        ) / 400.0))))
     WHERE player_id =
         CASE
             WHEN NEW.winner_id = NEW.player1_id THEN NEW.player2_id
