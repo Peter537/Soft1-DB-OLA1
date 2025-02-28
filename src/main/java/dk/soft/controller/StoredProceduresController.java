@@ -14,7 +14,7 @@ public class StoredProceduresController {
     public static void joinTournament(Context ctx) {
         TournamentBodyDTO body = ctx.bodyAsClass(TournamentBodyDTO.class);
         try (Connection conn = DatabaseConfig.getConnection();
-             CallableStatement statement = conn.prepareCall("{call joinTournament(?, ?)}")) {
+             CallableStatement statement = conn.prepareCall("CALL joinTournament(?, ?)")) {
 
             statement.setInt(1, body.tournamentID());
             statement.setInt(2, body.playerID());
@@ -28,7 +28,7 @@ public class StoredProceduresController {
     public static void submitMatchResult(Context ctx) {
         MatchResultDTO body = ctx.bodyAsClass(MatchResultDTO.class);
         try (Connection conn = DatabaseConfig.getConnection();
-             CallableStatement statement = conn.prepareCall("{call submitMatchResult(?, ?)}")) {
+             CallableStatement statement = conn.prepareCall("CALL submitMatchResult(?, ?)")) {
 
             statement.setInt(1, body.matchID());
             statement.setInt(2, body.winnerID());
