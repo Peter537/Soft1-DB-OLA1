@@ -7,5 +7,6 @@ Start først med at køre [create script](../sql/create_script.sql) som indehold
 derefter kan du køre [persistScriptet](./persistScript.sql) hvis du vil, da den skaber en function der kører det samme som fill_script.sql gør, bortset fra mit script har mangler så man kan tilmælde sig tournaments osv; så ikke alle tournaments bare er fulde, og den laver en function mere.
 
 ## Efter du så har kørt persist og create
-* kør [functions scriptet](./functions.sql)
-* Til sidst [scriptet med procedures](./procedures.sql).
+
+- kør [functions scriptet](./functions.sql)
+- Til sidst [scriptet med procedures](./procedures.sql).
