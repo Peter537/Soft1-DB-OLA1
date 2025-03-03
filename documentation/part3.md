@@ -10,7 +10,7 @@ Kør [sql/functions.sql](/sql/functions.sql)
 
 Til sidst [sql/procedures.sql](/sql/procedures.sql)
 
-# Dokuentation af part 3: funktionelle functions, procedures og triggers
+# Dokumentation af part 3: funktionelle functions, procedures og triggers
 
 Som udgangspunkt skal vi tjekke om vores værktøjer bliver registreret korrekt og til den rigtige database.
 
