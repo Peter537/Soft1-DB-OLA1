@@ -1,3 +1,15 @@
+Vi har lavet en persistScript.sql så vu bare kan køre den når vi vil redo persistence. Den er ændret lidt fra fill_script.sql, så der findes tournaments med færre end max anatallet af spillere så vi kan teste at joine en full tournament vs. en åben en, osv.
+
+## Korrekt brug
+
+Start først med at køre [sql/create_script.sql](/sql/create_script.sql) som indeholder tables og triggers (og deres trigger functions inkluderet også.)
+
+Derefter kan du køre [sql/persist_script.sql](/sql/persist_script.sql) hvis du vil, da den skaber en function der kører det samme som fill_script.sql gør, bortset fra det her script har mangler så man kan tilmelde sig tournaments osv; så ikke alle tournaments bare er fulde, og den laver en function mere.
+
+Kør [sql/functions.sql](/sql/functions.sql)
+
+Til sidst [sql/procedures.sql](/sql/procedures.sql)
+
 # Dokuentation af part 3: funktionelle functions, procedures og triggers
 
 Som udgangspunkt skal vi tjekke om vores værktøjer bliver registreret korrekt og til den rigtige database.
