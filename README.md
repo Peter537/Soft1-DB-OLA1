@@ -18,6 +18,15 @@ Vi har et [sql/fill_script.sql](/sql/fill_script.sql) til at fylde tabellerne me
 
 ### SQL script med de 15 SQL-forespørgsler.
 
+I fill-scriptet var alle sat på 1.000 rating som er start-værdien, men fordi på dette tidspunkt vi ikke har simuleret nogle matches så er alle spillere stadig på 1.000 rating, så de to queries der viser de 5 bedst rangerede spillere og gennemsnitlig rating for alle spillere vil give det samme resultat.
+
+Derfor har vi til denne opgave været inde i databasen og ændret nogle spilleres rating, så de har forskellige ratings ud fra denne query:
+
+```sql
+UPDATE players
+SET rating = FLOOR(RANDOM() * 401) + 800;
+```
+
 SQL-scriptet til de 15 SQL-forespørger er lavet i [sql/sql_queries.sql](/sql/sql_queries.sql).
 
 Dokumentationen for de 15 SQL-forespørgsler er lavet i [documentation/queries.md](/documentation/queries.md).
