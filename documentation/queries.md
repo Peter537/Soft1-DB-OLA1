@@ -150,7 +150,7 @@ og sætter et limit på 5 spillere (`LIMIT 5`).
 
 ![img.png](/images/queries/q7.png)
 
-Mangler rigtigt rating før beskrivelse kan komme.
+Her kan vi se de 5 bedst rangerede spillere, som er `user3 (rating = 1138), user11 (rating = 1128), user10 (rating = 1078), user14 (rating = 1020), user6 (rating = 983)`.
 
 ---
 
@@ -169,7 +169,7 @@ hvilket vil give os den gennemsnitlige rating for alle spillere.
 
 ![img.png](/images/queries/q8.png)
 
-Her kan vi se at den gennemsnitlige rating for alle spillere er **XXXXX**.
+Her kan vi se at den gennemsnitlige rating for alle spillere er 946.93.
 
 ---
 
