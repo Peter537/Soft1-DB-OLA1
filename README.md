@@ -45,6 +45,14 @@ Dokumentationen for applikationen er lavet i [documentation/app.md](/documentati
 
 ### Kort redegørelse med jeres betragtninger om brugen af SQL programmering (fordele og ulemper).
 
-**Fordele:** Når vi skal gemme data på en struktureret relationel måde, så er SQL en god måde at gøre det på, da det er nemt at læse og skrive data til databasen i forhold til f.eks. at læse og skrive data til en fil.
+**Fordele:**
 
-**Ulemper:** SQL-dialekter er forskellige, så nogle har nogle features som andre ikke har, samt nogle features skal kodes på forskellige måder
+- Når vi skal gemme data på en struktureret relationel måde, så er SQL en god måde at gøre det på, da det er nemt at læse og skrive data til databasen i forhold til f.eks. at læse og skrive data til en fil.
+- Det er godt med et centralt sted at gemme data, og SQL har mange funktionaliteter til at gøre dataen mere sikker.
+- Queries er meget tæt på 'normalt' sprog, så det er nemt at forstå queries.
+
+**Ulemper:**
+
+- SQL-dialekter er forskellige, så nogle har nogle features som andre ikke har, samt nogle features skal kodes på forskellige måder
+- Hvis man har en stor database kan det hurtigt blive uoverskueligt at finde rundt i, hvilket gør det svært at lave queries.
+- Det er svært at teste databaser hvis man har meget af sin forretningslogik i databasen.
